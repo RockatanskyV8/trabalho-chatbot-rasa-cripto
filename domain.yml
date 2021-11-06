@@ -1,33 +1,30 @@
 version: "2.0"
 
 intents:
-  - greet
-  - goodbye
-  - affirm
-  - deny
-  - mood_great
-  - mood_unhappy
-  - bot_challenge
+  - papofurado
+  - faq
+  - criptomoeda
+  
+entities:
+  - crypto
 
 responses:
-  utter_greet:
-  - text: "Hey! How are you?"
+  utter_papofurado/cumprimento:
+    - text: "Olá"
+    - text: "Oi"
+    - text: "Bom dia"
 
-  utter_cheer_up:
-  - text: "Here is something to cheer you up:"
-    image: "https://i.imgur.com/nGF1K8f.jpg"
+  utter_papofurado/adeus:
+    - text: "Até breve"
 
-  utter_did_that_help:
-  - text: "Did that help you?"
+  utter_papofurado/funcionalidades:
+    - text: "Sou capaz de informar o valor atual de criptomoedas"
 
-  utter_happy:
-  - text: "Great, carry on!"
+  utter_faq/explicacao:
+    - text: "Digite o nome ou sigla da criptomoedas que você quer saber"
 
-  utter_goodbye:
-  - text: "Bye"
-
-  utter_iamabot:
-  - text: "I am a bot, powered by Rasa."
+  utter_faq/algumacoisa:
+    - text: "não sei"
 
 session_config:
   session_expiration_time: 60

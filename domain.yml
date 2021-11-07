@@ -26,6 +26,12 @@ responses:
   utter_faq/algumacoisa:
     - text: "não sei"
 
-session_config:
-  session_expiration_time: 60
-  carry_over_slots_to_new_session: true
+slots:
+  crypto:
+    type: text
+    influence_conversation: false
+
+actions:
+  - action_clear_slots
+  - action_submit_crypto
+

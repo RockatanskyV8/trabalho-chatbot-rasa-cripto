@@ -7,12 +7,24 @@
 
 # This is a simple example for a custom action which utters "Hello World!"
 
-# from typing import Any, Text, Dict, List
-#
-# from rasa_sdk import Action, Tracker
-# from rasa_sdk.executor import CollectingDispatcher
-#
-#
+from typing import Any, Text, Dict, List
+
+from rasa_sdk import Action, Tracker
+from rasa_sdk.executor import CollectingDispatcher
+from rasa_sdk.events import SlotSet, AllSlotsReset
+
+class SubmitCrypto(Action):
+
+    def name(self) -> Text:
+        return "action_submit_crypto"
+
+    def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        crypto = tracker.get_slot('crypto')
+        dispatcher.utter_message(crypto)
+
+        return [ SlotSet('crypto', None) ]
+
+
 # class ActionHelloWorld(Action):
 #
 #     def name(self) -> Text:

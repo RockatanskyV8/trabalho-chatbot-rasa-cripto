@@ -30,4 +30,8 @@ nlu:
         - você sabe quais criptomoedas eu devo comprar?
         - você sabe qual o melhor momento para comprar criptomoedas?
         - você sabe qual o melhor momento para vender criptomoedas?
-
+  - intent: criptomoeda 
+    examples: |
+        - preço da [bitcoin](crypto)
+        - valor da [cardano](crypto)
+        - qual valor da [monero](crypto)

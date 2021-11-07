@@ -12,3 +12,7 @@ rules:
       - intent: faq 
       - action: utter_faq
 
+  - rule: criptomoedas 
+    steps:
+      - intent: criptomoeda
+      - action: action_submit_crypto 

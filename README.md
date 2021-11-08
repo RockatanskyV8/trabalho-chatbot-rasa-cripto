@@ -1,5 +1,6 @@
 # Bot de criptos em rasa
 
+precisa do pacote [pycoingecko](https://anaconda.org/conda-forge/pycoingecko)
 
 ## Informações do ambiente:
 

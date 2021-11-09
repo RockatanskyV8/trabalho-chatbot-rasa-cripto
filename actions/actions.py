@@ -12,7 +12,8 @@ from typing import Any, Text, Dict, List
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet, AllSlotsReset
-from pycoingecko import CoinGeckoAPI
+
+import requests
 
 class SubmitCrypto(Action):
 
@@ -21,24 +22,16 @@ class SubmitCrypto(Action):
 
     def run(self, dispatcher: CollectingDispatcher, tracker: Tracker, domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         crypto = tracker.get_slot('crypto')
-
-        cg = CoinGeckoAPI()
-        result = self.preco(cg, crypto)
-
+        result = self.preco(crypto)
         dispatcher.utter_message(result)
 
         return [ SlotSet('crypto', None) ]
 
-    def preco(self, cg, crypto):
-        print('verificando preço')
-        result = cg.get_price(ids=crypto, vs_currencies='brl')
-        result = "preço atual da " + crypto + " R$" + str(result[crypto]['brl'])
+    def preco(self, crypto):
+        url = 'https://api.coingecko.com/api/v3/simple/price?ids=' + crypto + '&vs_currencies=brl'
+        result = requests.get(url, headers={"accept": "application/json"}).json()[crypto]['brl']
 
-        return result
-
-    def market_cap(self, cg, crypto):
-        return ""
-
+        return "preço atual da " + crypto + " R$" + str(result)
 
 # class ActionHelloWorld(Action):
 #
